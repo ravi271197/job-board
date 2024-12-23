@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendMail as JobsSendMail;
+use App\Mail\SendMail;
+use App\Mail\UserRegistered;
 use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RegistrationController extends Controller
 {
@@ -16,7 +20,7 @@ class RegistrationController extends Controller
 
     public function signUp(Request $request){
 
-        dd($request->all());
+        
         $validated = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
@@ -31,6 +35,8 @@ class RegistrationController extends Controller
 
         $user->save();
 
+        JobsSendMail::dispatch($user);
+    
         toastr()->success('You are successfully Sign up');
         return redirect()->route('login');
 
