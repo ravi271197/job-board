@@ -20,10 +20,10 @@
                         <th scope="row">{!! $loop->iteration !!}</th>
                         <td>{!! $value->name !!}</td>
                         <td>{!! $value->description !!}</td>
-                        <td>{!! $value->status !!}</td>
+                        <td>{!! $value->status == 0 ? "Inactive" : "Active" !!}</td>
                         <td>
                             <a href="{!! route('admin.category.edit', ['id' => $value->id]) !!}" class="btn btn-info">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="{!! route('admin.category.delete',['id' => $value->id]) !!}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach

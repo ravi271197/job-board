@@ -10,20 +10,20 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Status</th>
+
                     <th scope="col">Handle</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $key => $value)
+                @foreach ($users as $key => $value)
                     <tr>
                         <th scope="row">{!! $loop->iteration !!}</th>
                         <td>{!! $value->name !!}</td>
-                        <td>{!! $value->description !!}</td>
-                        <td>{!! $value->status !!}</td>
+                        <td>{!! $value->email !!}</td>
+
                         <td>
-                            <a href="{!! route('admin.category.edit', ['id' => $value->id]) !!}" class="btn btn-info">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="{!! route('admin.users.view', ['id' => $value->id]) !!}" class="btn btn-info">View</a>
+                            <a href="{!! route('admin.users.delete', ['id' => $value->id]) !!}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach

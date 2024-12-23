@@ -48,6 +48,8 @@ Route::prefix('admin/category')->name('admin.category.')->middleware('admin')->g
 
 Route::prefix('admin/users')->name('admin.users.')->middleware('admin')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/view/{id}', [UserController::class, 'view'])->name('view');
+    Route::post('/delete/{id}', [UserController::class, 'delete'])->name('delete');
     
 });
 
