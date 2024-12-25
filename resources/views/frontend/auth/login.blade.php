@@ -17,6 +17,7 @@
                     </div>
                     <div class="mb-3">
                         <input type="submit" class="btn btn-primary" name="submit" value="submit">
+                        <a href="{!! route('social.login') !!}" class="btn btn-primary">Github Login</a>
                     </div>
                 </div>
             </form>

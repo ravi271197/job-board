@@ -8,6 +8,7 @@ use App\Http\Controllers\RegistrationController;
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\SocialLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,10 @@ Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('/login', [LoginController::class,'login'])->name('login.post');
 Route::get('/logout', [LoginController::class,'logout'])->name('login.logout');
 Route::get('/dashboard', [LoginController::class,'dashboard'])->name('dashboard');
+
+/* Social Login */
+Route::get('/auth/redirect',[SocialLoginController::class,'login'])->name('social.login');
+Route::get('/auth/callback', [SocialLoginController::class,'loginCallback'])->name('social.login.callback');
 
 /* Admin Routes */
 Route::get('/admin/login', [AdminLoginController::class,'index'])->name('admin.login');

@@ -12,7 +12,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                {!! Auth::user()->name !!}
+                                {!! Auth::user()->provider == "github" ? Auth::user()->email : Auth::user()->name !!}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{!! route('login.logout') !!}">Logout</a></li>
