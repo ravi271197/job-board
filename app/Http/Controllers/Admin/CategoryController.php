@@ -13,7 +13,8 @@ class CategoryController extends Controller
 
         $categories_arr = array();
 
-        $categories = Categories::all();
+        $categories = Categories::paginate(10);
+        
         if (isset($categories) && !empty($categories)) {
             $categories_arr = $categories;
         }
